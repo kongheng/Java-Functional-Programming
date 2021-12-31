@@ -1,13 +1,14 @@
 package imperative;
 
-import util.Person;
-
-import static util.Gender.FEMALE;
+import supplier.MockData;
+import model.Person;
 
 public class Main {
-    public static void main(String[] args) {
-        Person.personList.get().stream()
-            .filter(person -> person.getGender().equals(FEMALE))
-            .forEach(System.out::println);
-    }
+
+  public static void main(String[] args) {
+    MockData.peopleList.get().stream()
+        .limit(10)
+        .map(people -> Person.mapToPerson.apply(people))
+        .forEach(System.out::println);
+  }
 }
